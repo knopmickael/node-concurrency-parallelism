@@ -1,0 +1,17 @@
+{
+  "name": "concurrency-parallelism",
+  "version": "1.0.0",
+  "description": "Experimental project to validate the usability of Threads, Pools, and Clusters for the purpose of process parallelism and concurrency.",
+  "main": "index.js",
+  "keywords": [
+    "javascript",
+    "concurrency",
+    "parallelism",
+    "threads",
+    "concurrency",
+    "pool",
+    "cluster"
+  ],
+  "author": "Rickson Mickael Knop",
+  "license": "ISC"
+}
