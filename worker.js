@@ -6,14 +6,23 @@ const { input } = workerData;
 //   log(`Message received at worker: ${message}`);
 // });
 
-factorial(input)
-  .then((result) => {
-    parentPort.postMessage(
-      `[${threadMessage(isMainThread)}] Factorial of ${
-        workerData.input
-      }: ${result}`
-    );
-  })
-  .catch((err) => {
-    throw Error(err ? err : `The function at broke for some reason.`);
-  });
+while(true) {}
+
+// factorial(input)
+//   .then((result) => {
+//     parentPort.postMessage(
+//       `[${threadMessage(isMainThread)}] Factorial of ${
+//         workerData.input
+//       }: ${result}`
+//     );
+//   })
+//   .then(() => {
+//     // parentPort.postMessage("Encerrar thread");
+//     // let i = 0;
+//     // setInterval(() => {
+//     //   log(i++)
+//     // }, 1000);
+//   })
+//   .catch((err) => {
+//     throw Error(err ? err : `The function at broke for some reason.`);
+//   });

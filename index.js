@@ -1,4 +1,4 @@
-const { isMainThread, Worker } = require("worker_threads");
+const { isMainThread, Worker, threadId } = require("worker_threads");
 const { log, err, threadMessage, factorial } = require("./utils");
 let input = parseInt(process.argv[2]);
 let pool = process.argv[3];
@@ -8,17 +8,19 @@ if (!input) {
   return;
 }
 
-if (pool && pool !== 'true') {
+if (pool && pool !== "true") {
   err("ERROR: Pool needs to be true or omitted");
   return;
 }
 
+console.log(threadId)
+
 if (input > 100) {
   if (pool) {
-    
     return;
   }
-  for (let index = 1; index <= 4; index++) {
+  let index = 1;
+  // for (index; index <= 4; index++) {
     const id = `w${index}`;
     const worker = new Worker(`./worker.js`, { workerData: { id, input } });
     worker.on("online", () => {
@@ -27,6 +29,7 @@ if (input > 100) {
     });
     worker.on("message", (msg) => {
       log(`Message from thread: ${msg}`);
+      if (msg === "Encerrar thread") worker.terminate();
     });
     worker.on("error", (msg) => {
       log(`Error: ${msg}`);
@@ -34,7 +37,7 @@ if (input > 100) {
     worker.on("exit", () => {
       log(`Worker ${id} finished`);
     });
-  }
+  // }
 } else {
   factorial(input)
     .then((result) => {

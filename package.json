@@ -13,5 +13,8 @@
     "cluster"
   ],
   "author": "Rickson Mickael Knop",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "serve": "node server.js"
+  }
 }
